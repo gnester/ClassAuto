@@ -45,7 +45,11 @@ public class Car {
     }
     
     public void setMileage(int mileage) {
-        this.mileage = mileage;
+        if (mileage >= 0) {
+        this.mileage = mileage; 
+   } else {
+       System.out.println("Ошибка! Пробег не может быть отрицательным числом!");
+   }
     }
     
     public double getPrice() {
