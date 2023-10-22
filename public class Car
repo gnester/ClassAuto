@@ -1,0 +1,84 @@
+java
+public class Car {
+    private String model;
+    private String regNumber;
+    private int year;
+    private int mileage;
+    private double cost;
+
+    public Car(String model, String regNumber, int year, int mileage, double cost) {
+        this.model = model;
+        this.regNumber = regNumber;
+        this.year = year;
+        this.mileage = mileage;
+        this.cost = cost;
+    }
+    public String getModel() {
+        return model;
+    }
+    public String getRegNumber() {
+        return regNumber;
+    }
+    public int getYear() {
+        return year;
+    }
+    public int getMileage() {
+        return mileage;
+    }
+    public double getCost() {
+        return cost;
+    }
+}
+
+java
+import java.util.Arrays;
+
+// Ниже приведен пример алгоритма работы с массивом данных объектов класса Car:
+
+public class Main {
+    public static void main(String[] args) {
+        Car[] cars = {
+                new Car("Audi A4", "Л134ТР", 2018, 50000, 2500000),
+				new Car ("Lamborgini Aventador", "А777МР", 2022, 14750, 24950000),
+                new Car("BMW X5", "С567ДЕ", 2019, 30000, 3500000),
+                new Car("Mercedes-Benz C-Class", "С901МК", 2017, 80000, 2000000),
+				new Car ("Honda Civik", "А321БВ", 2015, 120000, 1500000),
+				new Car ("Kia Rio", "О389МК", 2016, 97500, 1199000),
+				new Car ("Kia Sorento", "Н496НК", 2012, 195800, 2325000),
+				new Car ("Lada X-Ray", "У558ПД", 2019, 59625, 2569000)
+        };
+
+        // Определение самого дешевого автомобиля
+        Car cheapestCar = cars[0];
+        for (Car car : cars) {
+            if (car.getCost() < cheapestCar.getCost()) {
+                cheapestCar = car;
+            }
+        }
+        System.out.println("Самый дешевый автомобиль: " + cheapestCar.getModel());
+
+        // Упорядочивание массива по убыванию года выпуска
+        Arrays.sort(cars, (a, b) -> b.getYear() - a.getYear());
+        System.out.println("Массив автомобилей после сортировки:");
+        for (Car car : cars) {
+            System.out.println(car.getModel() + ", " + car.getYear());
+        }
+
+        // Поиск автомобиля по регистрационному номеру и корректировка пробега
+        String searchRegNumber = "Л134ТР";
+        for (Car car : cars) {
+            if (car.getRegNumber().equals(searchRegNumber)) {
+                System.out.println("Найден автомобиль с регистрационным номером " + searchRegNumber);
+                System.out.println("Текущий пробег: " + car.getMileage());
+                car.mileage = 35000;  // Корректировка пробега
+                System.out.println("Информация об автомобиле после корректировки пробега:");
+                System.out.println(car.getModel() + ", " + car.getRegNumber() + ", " + car.getYear() + ", " + car.getMileage() + ", " + car.getCost());
+                break;
+            }
+        }
+    }
+}
+
+/*В этом примере создается массив объектов класса Car, затем выполняются описанные в задании действия: определение самого дешевого автомобиля, 
+упорядочивание массива по убыванию года выпуска, поиск автомобиля по регистрационному номеру, корректировка пробега и вывод полной информации об 
+автомобиле после редактирования.*/
