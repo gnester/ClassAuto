@@ -46,7 +46,7 @@ public class CarArrayExample {
         // Если найден автомобиль, корректируем поле и выводим информацию после редактирования
         if (searchedCar != null) {
             searchedCar.setMileage(24666);
-            System.out.println("Информация о автомобиле после редактирования:");
+            System.out.println("Информация об автомобиле после редактирования:");
             searchedCar.printInfo();
         } else {
             System.out.println("Автомобиль с указанным регистрационным номером не найден.");
