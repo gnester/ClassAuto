@@ -1,0 +1,55 @@
+import java.util.Arrays;
+public class CarArrayExample {
+    public static void main(String[] args) {
+        // Создаем массив объектов Car
+        Car[] cars = new Car[9];
+        
+        // Инициализируем объекты Car
+        cars[0] = new Car("Toyota Camry", "Н123ТТ", 2015, 110000, 15000000);
+        cars[1] = new Car("BMW X5", "Г456ВТ", 2017, 50000, 25000000);
+        cars[2] = new Car("Audi A6", "С789ПР", 2014, 83000, 18000000);
+        cars[3] = new Car("Audi A4", "Л134ТР", 2018, 50000, 25000000);
+		cars[4] = new Car("Lamborgini Aventador", "А777МР", 2022, 14750, 24950000);
+        cars[5] = new Car("BMW X5", "С567ДЕ", 2019, 30000, 3500000);
+        cars[6] = new Car("Mercedes-Benz C-Class", "С901МК", 2017, 80000, 2000000);
+		cars[7] = new Car("Honda Civik", "А321БВ", 2015, 120000, 1500000);
+		cars[8] = new Car("Kia Rio", "О389МК", 2016, 97500, 1199000);
+        
+        // Определение самого дешевого автомобиля
+        Car cheapestCar = cars[0];
+        for (int i = 1; i < cars.length; i++) {
+            if (cars[i].getPrice() < cheapestCar.getPrice()) {
+                cheapestCar = cars[i];
+            }
+        }
+        System.out.println("Самый дешевый автомобиль:");
+        cheapestCar.printInfo();
+        
+        // Сортировка массива по убыванию года выпуска
+        Arrays.sort(cars, (car1, car2) -> car2.getYear() - car1.getYear());
+        System.out.println("Массив автомобилей, упорядоченный по убыванию года выпуска:");
+        for (Car car : cars) {
+            car.printInfo();
+            System.out.println();
+        }
+        
+        // Поиск автомобиля по регистрационному номеру
+        String searchRegNumber = "А777МР";
+        Car searchedCar = null;
+        for (Car car : cars) {
+            if (car.getRegNumber().equals(searchRegNumber)) {
+                searchedCar = car;
+                break;
+            }
+        }
+        
+        // Если найден автомобиль, корректируем поле и выводим информацию после редактирования
+        if (searchedCar != null) {
+            searchedCar.setMileage(24666);
+            System.out.println("Информация о автомобиле после редактирования:");
+            searchedCar.printInfo();
+        } else {
+            System.out.println("Автомобиль с указанным регистрационным номером не найден.");
+        }
+    }
+}
