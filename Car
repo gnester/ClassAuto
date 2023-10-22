@@ -3,28 +3,65 @@ public class Car {
     private String regNumber;
     private int year;
     private int mileage;
-    private double cost;
-
-    public Car(String model, String regNumber, int year, int mileage, double cost) {
+    private double price;
+    
+    // Конструктор класса
+    public Car(String model, String regNumber, int year, int mileage, double price) {
         this.model = model;
         this.regNumber = regNumber;
         this.year = year;
         this.mileage = mileage;
-        this.cost = cost;
+        this.price = price;
     }
+    
+    // Геттеры и сеттеры для всех полей
+    
     public String getModel() {
         return model;
     }
+    
+    public void setModel(String model) {
+        this.model = model;
+    }
+    
     public String getRegNumber() {
         return regNumber;
     }
+    
+    public void setRegNumber(String regNumber) {
+        this.regNumber = regNumber;
+    }
+    
     public int getYear() {
         return year;
     }
+    
+    public void setYear(int year) {
+        this.year = year;
+    }
+    
     public int getMileage() {
         return mileage;
     }
-    public double getCost() {
-        return cost;
+    
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+    
+    public double getPrice() {
+        return price;
+    }
+    
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    // Метод для вывода полной информации об автомобиле
+    public void printInfo() {
+        System.out.println("Модель: " + model);
+        System.out.println("Регистрационный номер: " + regNumber);
+        System.out.println("Год выпуска: " + year);
+        System.out.println("Пробег: " + mileage);
+        System.out.println("Стоимость: " + price);
     }
 }
